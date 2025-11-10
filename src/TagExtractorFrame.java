@@ -59,7 +59,7 @@ public class TagExtractorFrame extends JFrame {
     }
 
     private void chooseFile(boolean isDoc) {
-        JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser(new File("src"));
         if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             File f = chooser.getSelectedFile();
             if (isDoc) {
@@ -113,7 +113,7 @@ public class TagExtractorFrame extends JFrame {
             showError("No tags to save.");
             return;
         }
-        JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser(new File("src"));
         if (chooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
             try (BufferedWriter w = Files.newBufferedWriter(chooser.getSelectedFile().toPath())) {
                 w.write("TAG,FREQ\n");
